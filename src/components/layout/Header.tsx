@@ -13,7 +13,7 @@ const linkClasses =
 
 export default function Header() {
   return (
-    <header className="header fixed inset-x-0 top-0 z-50 h-16 bg-[#11110D] md:h-28">
+    <header className="header fixed inset-x-0 top-0 z-50 h-16 bg-[#11110D] opacity-0 md:h-28">
       <div className="relative flex h-full items-center justify-between px-7 md:px-16" dir="rtl">
         <div className="flex items-center">
           <nav className="hidden items-center gap-14.5 md:flex" aria-label="ناوبری اصلی">
