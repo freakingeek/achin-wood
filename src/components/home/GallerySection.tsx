@@ -88,11 +88,11 @@ export default function GallerySection() {
   };
 
   const showPrevious = () => {
-    slideGallery(1);
+    slideGallery(-1);
   };
 
   const showNext = () => {
-    slideGallery(-1);
+    slideGallery(1);
   };
 
   return (
@@ -102,57 +102,54 @@ export default function GallerySection() {
       dir="rtl"
       aria-label="گالری آچین وود"
     >
-      <div
-        className="mb-11 flex items-center justify-between md:mb-[clamp(2.8rem,8vh,5rem)]"
-        dir="ltr"
-      >
-        <div className="flex items-center gap-3" aria-label="دکمه‌های جابه‌جایی گالری">
-          <button
-            className="grid size-[clamp(2.4rem,3.5vw,3.4rem)] place-items-center rounded-full border border-[#11120e] bg-transparent text-[clamp(1.2rem,1.6vw,1.5rem)] leading-none text-[#11120e] transition hover:bg-[#11120e] hover:text-[#fbfaf5] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#11120e] disabled:pointer-events-none disabled:border-[#11120e]/20 disabled:text-[#11120e]/28"
-            type="button"
-            onClick={showPrevious}
-            disabled={!canScrollForward}
-            aria-label="تصویر قبلی"
-          >
-            ←
-          </button>
-
-          <button
-            className="grid size-[clamp(2.4rem,3.5vw,3.4rem)] place-items-center rounded-full border border-[#11120e] bg-transparent text-[clamp(1.2rem,1.6vw,1.5rem)] leading-none text-[#11120e] transition hover:bg-[#11120e] hover:text-[#fbfaf5] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#11120e] disabled:pointer-events-none disabled:border-[#11120e]/20 disabled:text-[#11120e]/28"
-            type="button"
-            onClick={showNext}
-            disabled={!canScrollBackward}
-            aria-label="تصویر بعدی"
-          >
-            →
-          </button>
-        </div>
-
-        <h2 className="m-0 text-2xl leading-none font-medium tracking-[-0.045em] text-[#11110D] md:text-5xl" dir="rtl">
+      <div className="mb-11 flex items-center justify-end md:mb-[clamp(2.8rem,8vh,5rem)]" dir="ltr">
+        <h2 className="m-0 text-right text-2xl leading-none font-medium tracking-[-0.045em] text-[#11110D] md:text-5xl" dir="rtl">
           گالری
         </h2>
       </div>
 
-      <div
-        ref={trackRef}
-        className="-mx-8 flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth px-8 [scrollbar-width:none] md:-mx-[clamp(1.4rem,7vw,7rem)] md:gap-[clamp(1.2rem,2.2vw,2rem)] md:px-[clamp(1.4rem,7vw,7rem)] [&::-webkit-scrollbar]:hidden"
-        dir="ltr"
-      >
-        {galleryItems.map((item) => (
-          <div
-            className="relative size-[396px] shrink-0 snap-start overflow-hidden bg-[#e7dfd0] md:size-[590px]"
-            data-gallery-slide
-            key={item.id}
-          >
-            <Image
-              alt={item.alt}
-              className="object-cover object-center"
-              fill
-              sizes={item.sizes}
-              src={item.src}
-            />
-          </div>
-        ))}
+      <div className="relative">
+        <button
+          className="absolute top-1/2 left-0 z-20 grid size-[clamp(2.4rem,3.5vw,3.4rem)] -translate-y-1/2 place-items-center rounded-full border border-[#11120e] bg-[#fbfaf5]/80 text-[clamp(1.2rem,1.6vw,1.5rem)] leading-none text-[#11120e] backdrop-blur-sm transition hover:bg-[#11120e] hover:text-[#fbfaf5] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#11120e] disabled:pointer-events-none disabled:border-[#11120e]/20 disabled:text-[#11120e]/28 md:left-[clamp(-4.5rem,-3.5vw,-2.25rem)]"
+          type="button"
+          onClick={showPrevious}
+          disabled={!canScrollForward}
+          aria-label="تصویر قبلی"
+        >
+          ←
+        </button>
+
+        <button
+          className="absolute top-1/2 right-0 z-20 grid size-[clamp(2.4rem,3.5vw,3.4rem)] -translate-y-1/2 place-items-center rounded-full border border-[#11120e] bg-[#fbfaf5]/80 text-[clamp(1.2rem,1.6vw,1.5rem)] leading-none text-[#11120e] backdrop-blur-sm transition hover:bg-[#11120e] hover:text-[#fbfaf5] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#11120e] disabled:pointer-events-none disabled:border-[#11120e]/20 disabled:text-[#11120e]/28 md:right-[clamp(-4.5rem,-3.5vw,-2.25rem)]"
+          type="button"
+          onClick={showNext}
+          disabled={!canScrollBackward}
+          aria-label="تصویر بعدی"
+        >
+          →
+        </button>
+
+        <div
+          ref={trackRef}
+          className="-mx-8 flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth px-8 [scrollbar-width:none] md:-mx-[clamp(1.4rem,7vw,7rem)] md:gap-[clamp(1.2rem,2.2vw,2rem)] md:px-[clamp(1.4rem,7vw,7rem)] [&::-webkit-scrollbar]:hidden"
+          dir="ltr"
+        >
+          {galleryItems.map((item) => (
+            <div
+              className="relative size-[396px] shrink-0 snap-start overflow-hidden bg-[#e7dfd0] md:size-[590px]"
+              data-gallery-slide
+              key={item.id}
+            >
+              <Image
+                alt={item.alt}
+                className="object-cover object-center"
+                fill
+                sizes={item.sizes}
+                src={item.src}
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
