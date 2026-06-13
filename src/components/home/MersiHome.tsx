@@ -140,7 +140,7 @@ export default function MersiHome() {
           )
           .fromTo(
             storyStep.querySelectorAll(
-              ".achin-after-hero__copy p, [data-story-copy] p, .achin-gallery__nav, .achin-gallery__item, .achin-factory__subtitle, .achin-contact__panel, .achin-contact__lead, .achin-contact__display",
+              ".achin-after-hero__copy p, [data-story-copy] p, .achin-gallery__nav, .achin-gallery__item, .achin-factory__subtitle, .achin-contact__panel, .achin-contact__lead, .achin-contact__display, [data-contact-form]",
             ),
             { autoAlpha: 0, y: 38, filter: "blur(10px)" },
             { autoAlpha: 1, y: 0, filter: "blur(0px)", stagger: 0.08, ease: "none" },
@@ -151,6 +151,12 @@ export default function MersiHome() {
             { autoAlpha: 0, x: 92, y: 28, letterSpacing: "0.14em", filter: "blur(12px)" },
             { autoAlpha: 1, x: 0, y: 0, letterSpacing: "0.02em", filter: "blur(0px)", ease: "none" },
             0.42,
+          )
+          .fromTo(
+            storyStep.querySelectorAll("[data-contact-field], [data-contact-submit]"),
+            { autoAlpha: 0, y: 24, filter: "blur(8px)" },
+            { autoAlpha: 1, y: 0, filter: "blur(0px)", stagger: 0.08, ease: "none" },
+            0.48,
           );
       });
     }, main);
