@@ -1,4 +1,47 @@
+"use client";
+
+import { type FormEvent, useState } from "react";
+
 export default function ContactSection() {
+  const [statusMessage, setStatusMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    setIsSubmitting(true);
+    setStatusMessage("");
+
+    try {
+      const response = await fetch("/api/consultations", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          city: formData.get("city"),
+          name: formData.get("name"),
+          phone: formData.get("phone"),
+        }),
+      });
+
+      const data = (await response.json().catch(() => null)) as { message?: string } | null;
+
+      if (!response.ok) {
+        throw new Error(data?.message ?? "ثبت درخواست با خطا مواجه شد.");
+      }
+
+      form.reset();
+      setStatusMessage(data?.message ?? "درخواست شما ثبت شد.");
+    } catch (error) {
+      setStatusMessage(error instanceof Error ? error.message : "ثبت درخواست با خطا مواجه شد.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
   return (
     <section
       id="contact"
@@ -22,7 +65,7 @@ export default function ContactSection() {
         className="achin-contact__panel mx-auto mt-11 w-full max-w-[32.2rem] border border-[#d0cec7] bg-white/40 px-[clamp(2.45rem,8vw,3.2rem)] py-[clamp(2.4rem,6vh,3.8rem)] md:col-start-1 md:row-start-1 md:mx-0 md:mt-0 md:w-[89rem] md:max-w-none md:px-[clamp(2.6rem,3.4vw,3.6rem)] md:py-[clamp(2.4rem,4.7vh,3.4rem)]"
         dir="rtl"
       >
-        <form className="grid gap-8 md:gap-7">
+        <form className="grid gap-8 md:gap-7" onSubmit={handleSubmit}>
           <div className="achin-contact__field grid gap-4 text-right md:gap-3">
             <label
               className="flex w-full justify-start gap-0.5 text-right text-xs font-normal text-[#565449] md:text-base"
@@ -37,6 +80,7 @@ export default function ContactSection() {
               name="name"
               className="h-9 border border-[#565449]/30 bg-transparent px-6 text-right text-[1rem] text-[#565449] outline-none transition placeholder:text-[#cfcbc2] focus:border-[#565449] md:h-14 md:px-5 md:text-[0.85rem]"
               placeholder="نام شما"
+              required
               type="text"
             />
           </div>
@@ -55,6 +99,7 @@ export default function ContactSection() {
               name="phone"
               className="h-9 border border-[#565449]/30 bg-transparent px-6 text-right text-[1rem] text-[#565449] outline-none transition placeholder:text-[#cfcbc2] focus:border-[#565449] md:h-14 md:px-5 md:text-[0.85rem]"
               placeholder="۰۹۱۲۳۴۵۶۷۸۹"
+              required
               type="tel"
             />
           </div>
@@ -73,16 +118,24 @@ export default function ContactSection() {
               name="city"
               className="h-9 border border-[#565449]/30 bg-transparent px-6 text-right text-[1rem] text-[#565449] outline-none transition placeholder:text-[#cfcbc2] focus:border-[#565449] md:h-14 md:px-5 md:text-[0.85rem]"
               placeholder="تهران"
+              required
               type="text"
             />
           </div>
 
           <button
-            className="achin-contact__submit mt-2 h-12 bg-[#0d0f0b] px-6 text-center text-sm font-extrabold text-[#FFFCF5] transition hover:bg-[#25251f] md:mt-3 md:h-[72px] md:text-2xl"
-            type="button"
+            className="achin-contact__submit mt-2 h-12 bg-[#0d0f0b] px-6 text-center text-sm font-extrabold text-[#FFFCF5] transition hover:bg-[#25251f] disabled:cursor-not-allowed disabled:opacity-65 md:mt-3 md:h-[72px] md:text-2xl"
+            disabled={isSubmitting}
+            type="submit"
           >
-            درخواست مشاوره رایگان
+            {isSubmitting ? "در حال ثبت..." : "درخواست مشاوره رایگان"}
           </button>
+
+          {statusMessage ? (
+            <p className="m-0 text-center text-sm font-medium text-[#565449]" role="status">
+              {statusMessage}
+            </p>
+          ) : null}
         </form>
       </div>
 
