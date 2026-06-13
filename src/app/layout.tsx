@@ -1,13 +1,24 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
-import { cn } from "@/lib/utils";
+import localFont from "next/font/local";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+const iranYekan = localFont({
+  src: "../../public/fonts/IRANYekanX/IRANYekanXVF.woff2",
+  variable: "--font-iran-yekan",
+  display: "swap",
+});
+
+const sofiaPro = localFont({
+  src: "../../public/fonts/SofiaPro/SofiaProUltraLightAz.otf",
+  variable: "--font-sofia-pro",
+  display: "swap",
+  weight: "250",
+});
 
 export const metadata: Metadata = {
-  title: "Achin Wood",
-  description: "",
+  title: "Achin Wood | Crafted Interior Woodwork",
+  description:
+    "Achin Wood creates warm architectural interiors, custom joinery, and crafted wood details for residential and commercial spaces.",
 };
 
 type RootLayoutProps = Readonly<{
@@ -16,8 +27,8 @@ type RootLayoutProps = Readonly<{
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="fa_IR" className={cn("h-full antialiased", "font-sans", geist.variable)}>
-      <body className="min-h-full">{children}</body>
+    <html lang="fa-IR" dir="rtl" className={`${iranYekan.variable} ${sofiaPro.variable} h-full antialiased`}>
+      <body className="min-h-full bg-neutral-950 text-white">{children}</body>
     </html>
   );
 }

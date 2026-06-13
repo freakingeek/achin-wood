@@ -1,6 +1,6 @@
-import { MapPin } from "lucide-react";
 import Image from "next/image";
 import { forwardRef } from "react";
+import LocationBox from "@/components/home/LocationBox";
 
 const KitchensSection = forwardRef<HTMLElement>(
   function KitchensSection(_, ref) {
@@ -27,18 +27,7 @@ const KitchensSection = forwardRef<HTMLElement>(
           aria-hidden="true"
         />
 
-        <div
-          data-story-pill
-          className="flex min-h-9 w-fit items-center gap-2 rounded-full border border-[#ffffff30] bg-white/30 px-4 py-2 lg:text-sm text-[10px] font-medium text-white backdrop-blur-[18px] absolute lg:top-32 lg:inset-e-32 top-10 inset-e-10"
-        >
-          <MapPin
-            className="lg:size-5 size-4 stroke-1 shrink-0"
-            strokeWidth={3}
-            aria-hidden="true"
-          />
-
-          <span>پروژه مسکونی میرداماد</span>
-        </div>
+        <LocationBox>پروژه مسکونی میرداماد</LocationBox>
 
         <div
           data-story-copy

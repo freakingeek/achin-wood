@@ -1,3 +1,5 @@
+import MersiHome from "@/components/home/MersiHome";
+
 export default function HomePage() {
-  return <div>به نام خدای حسین (ع)</div>;
+  return <MersiHome />;
 }
