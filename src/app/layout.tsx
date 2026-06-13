@@ -16,9 +16,37 @@ const sofiaPro = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Achin Wood | Crafted Interior Woodwork",
+  title: "آچین وود | طراحی و اجرای دکوراسیون و محصولات چوبی لوکس",
   description:
-    "Achin Wood creates warm architectural interiors, custom joinery, and crafted wood details for residential and commercial spaces.",
+    "آچین وود با بیش از ۲۵ سال تجربه در طراحی، تولید و اجرای کابینت، درب، کمد، دکوراسیون داخلی و جزئیات چوبی لوکس برای پروژه‌های مسکونی، اداری و تجاری فعالیت می‌کند.",
+  keywords: [
+    "آچین وود",
+    "طراحی داخلی",
+    "دکوراسیون چوبی",
+    "کابینت لوکس",
+    "درب چوبی",
+    "کمد دیواری",
+    "اجرای دکوراسیون داخلی",
+    "محصولات چوبی سفارشی",
+  ],
+  openGraph: {
+    title: "آچین وود | طراحی و اجرای دکوراسیون و محصولات چوبی لوکس",
+    description:
+      "طراحی، تولید و اجرای محصولات چوبی لوکس؛ از کابینت، درب و کمد تا جزئیات دکوراسیون داخلی برای پروژه‌های مسکونی، اداری و تجاری.",
+    siteName: "Achin Wood",
+    locale: "fa_IR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "آچین وود | طراحی و اجرای دکوراسیون و محصولات چوبی لوکس",
+    description:
+      "طراحی و اجرای محصولات چوبی سفارشی و دکوراسیون داخلی لوکس برای خانه‌ها و فضاهای کاری.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 type RootLayoutProps = Readonly<{
