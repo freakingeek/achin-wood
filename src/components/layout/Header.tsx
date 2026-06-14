@@ -8,6 +8,8 @@ const navItems = [
   { href: "#contact", label: "تماس با ما" },
 ];
 
+const catalogHref = "http://s3.lexoya.com/longbio-gca/achin-wood.pdf";
+
 const linkClasses =
   "text-[16px] font-medium leading-none text-[#DAD1BE] transition-colors duration-200 hover:text-[#FFFCF5] focus-visible:text-[#FFFCF5] focus-visible:outline-none";
 
@@ -24,7 +26,17 @@ export default function Header() {
             ))}
           </nav>
 
-          <MobileHeaderMenu navItems={navItems} />
+          <div className="flex items-center gap-4 md:hidden">
+            <MobileHeaderMenu navItems={navItems} catalogHref={catalogHref} />
+            <a
+              className="inline-flex h-9 shrink-0 items-center justify-center rounded-full border border-[#DAD1BE]/40 px-3 text-[12px] font-medium leading-none text-[#FFFCF5] transition-colors duration-200 hover:border-[#FFFCF5] hover:bg-[#FFFCF5]/10 focus-visible:border-[#FFFCF5] focus-visible:bg-[#FFFCF5]/10 focus-visible:outline-none"
+              href={catalogHref}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              دانلود کاتالوگ
+            </a>
+          </div>
         </div>
 
         <a
@@ -44,7 +56,9 @@ export default function Header() {
 
         <a
           className="hidden h-12.5 shrink-0 items-center justify-center bg-[#6A6658] px-6 text-[16px] font-medium text-[#FFFCF5] transition-colors duration-200 hover:bg-[#7A7565] focus-visible:bg-[#7A7565] focus-visible:outline-none md:inline-flex"
-          href="#catalog"
+          href={catalogHref}
+          rel="noopener noreferrer"
+          target="_blank"
         >
           دانلود کاتالوگ
         </a>

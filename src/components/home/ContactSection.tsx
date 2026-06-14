@@ -1,6 +1,9 @@
 "use client";
 
 import { type FormEvent, useState } from "react";
+import { FaPhoneAlt } from "react-icons/fa";
+
+const successMessage = "درخواست مشاوره شما ثبت شد،کارشناسان ما همین امروز با شما ارتباط خواهند گرفت!";
 
 export default function ContactSection() {
   const [statusMessage, setStatusMessage] = useState("");
@@ -35,7 +38,7 @@ export default function ContactSection() {
       }
 
       form.reset();
-      setStatusMessage(data?.message ?? "درخواست شما ثبت شد.");
+      setStatusMessage(data?.message ?? successMessage);
     } catch (error) {
       setStatusMessage(error instanceof Error ? error.message : "ثبت درخواست با خطا مواجه شد.");
     } finally {
@@ -46,11 +49,11 @@ export default function ContactSection() {
     <section
       id="contact"
       data-story-step
-      className="relative isolate min-h-svh overflow-hidden bg-[#fbfaf5] px-5 pt-24 pb-8 text-[#565449] md:grid md:min-h-[70svh] md:grid-cols-[2fr_0.58fr] md:items-center md:gap-[clamp(2rem,5vw,6rem)] md:px-[clamp(4rem,8vw,8.5rem)] md:py-[clamp(4rem,10vh,7rem)]"
+      className="relative isolate min-h-svh overflow-hidden bg-[#fbfaf5] px-5 pt-24 pb-8 text-[#565449] md:grid md:min-h-[70svh] md:grid-cols-[minmax(0,1fr)_minmax(20rem,24rem)] md:grid-rows-[1fr_auto] md:items-end md:gap-x-[clamp(2rem,5vw,6rem)] md:gap-y-8 md:px-[clamp(4rem,8vw,8.5rem)] md:py-[clamp(4rem,8vh,5.5rem)]"
       dir="ltr"
       aria-label="فرم تماس آچین وود"
     >
-      <div className="mx-auto max-w-124 text-center md:absolute md:top-[clamp(4rem,10vh,7rem)] md:right-35 md:mx-0 md:max-w-[24rem] md:text-right" data-story-copy>
+      <div className="mx-auto max-w-124 text-center md:col-start-2 md:row-start-1 md:self-start md:justify-self-end md:mx-0 md:max-w-[24rem] md:text-right" data-story-copy>
         <h2 className="achin-contact__heading m-0 text-2xl font-bold leading-[1.42] tracking-[-0.04em] text-[#565449] md:text-[32px] md:leading-[1.28]">
           مشاوره اختصاصی رایگان برای پروژه شما
         </h2>
@@ -62,7 +65,7 @@ export default function ContactSection() {
       </div>
 
       <div
-        className="achin-contact__panel mx-auto mt-11 w-full max-w-[32.2rem] border border-[#d0cec7] bg-white/40 px-[clamp(2.45rem,8vw,3.2rem)] py-[clamp(2.4rem,6vh,3.8rem)] md:col-start-1 md:row-start-1 md:mx-0 md:mt-0 md:w-[89rem] md:max-w-none md:px-[clamp(2.6rem,3.4vw,3.6rem)] md:py-[clamp(2.4rem,4.7vh,3.4rem)]"
+        className="achin-contact__panel relative z-10 mx-auto mt-11 w-full max-w-[32.2rem] border border-[#d0cec7] bg-white/40 px-[clamp(2.45rem,8vw,3.2rem)] py-[clamp(2.4rem,6vh,3.8rem)] md:col-start-1 md:row-start-1 md:mx-0 md:mt-0 md:w-full md:max-w-[min(100%,56rem)] md:self-end md:justify-self-start md:px-[clamp(2rem,3vw,3.2rem)] md:py-[clamp(2rem,3.8vh,3rem)]"
         dir="rtl"
       >
         <form className="grid gap-8 md:gap-7" data-contact-form onSubmit={handleSubmit}>
@@ -124,12 +127,13 @@ export default function ContactSection() {
           </div>
 
           <button
-            className="achin-contact__submit mt-2 h-12 bg-[#0d0f0b] px-6 text-center text-sm font-extrabold text-[#FFFCF5] transition hover:bg-[#25251f] disabled:cursor-not-allowed disabled:opacity-65 md:mt-3 md:h-[72px] md:text-2xl"
+            className="achin-contact__submit mt-2 inline-flex h-12 items-center justify-center gap-3 bg-[#0d0f0b] px-6 text-center text-sm font-extrabold text-[#FFFCF5] transition hover:bg-[#25251f] disabled:cursor-not-allowed disabled:opacity-65 md:mt-3 md:h-[72px] md:text-2xl"
             data-contact-submit
             disabled={isSubmitting}
             type="submit"
           >
-            {isSubmitting ? "در حال ثبت..." : "درخواست مشاوره رایگان"}
+            <FaPhoneAlt className="size-4 md:size-6" aria-hidden="true" />
+            <span>{isSubmitting ? "در حال ثبت..." : "درخواست مشاوره رایگان"}</span>
           </button>
 
           {statusMessage ? (
@@ -141,7 +145,7 @@ export default function ContactSection() {
       </div>
 
       <p
-        className="achin-contact__display pointer-events-none mt-9 mb-0 translate-x-16 text-left font-sofia-pro text-5xl font-[250] leading-none tracking-[0.035em] text-[#DAD1BE] md:absolute md:right-[clamp(4rem,8vw,8.5rem)] md:bottom-[clamp(4.8rem,10vh,7.4rem)] md:m-0 md:translate-x-0 md:text-[100px]"
+        className="achin-contact__display pointer-events-none mt-9 mb-0 translate-x-16 text-left font-sofia-pro text-5xl font-[250] leading-none tracking-[0.035em] text-[#DAD1BE] md:col-span-2 md:col-start-1 md:row-start-2 md:m-0 md:translate-x-0 md:self-end md:justify-self-end md:text-[clamp(76px,7vw,100px)]"
         dir="ltr"
         aria-hidden="true"
       >

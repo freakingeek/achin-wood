@@ -43,7 +43,10 @@ export async function POST(request: Request) {
       RETURNING id
     `;
 
-    return NextResponse.json({ id: consultation.id, message: "درخواست شما ثبت شد." });
+    return NextResponse.json({
+      id: consultation.id,
+      message: "درخواست مشاوره شما ثبت شد،کارشناسان ما همین امروز با شما ارتباط خواهند گرفت!",
+    });
   } catch (error) {
     console.error("Failed to submit consultation request", error);
 

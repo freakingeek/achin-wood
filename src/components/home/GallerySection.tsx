@@ -5,6 +5,12 @@ import { useEffect, useRef, useState } from "react";
 
 const galleryItems = [
   {
+    id: "mirror-console",
+    alt: "آینه قدی قوسی با کنسول سفید و گیاهان خانگی",
+    src: "/images/81c314ab-78b2-443e-ac63-9018b16ed211.png",
+    sizes: "(min-width: 768px) 590px, 396px",
+  },
+  {
     id: "salon",
     alt: "فضای آرایشگاهی لوکس با آینه‌های طلایی و صندلی آبی",
     src: "/images/6ec53ece-779c-431d-b35a-14824a233375.png",
@@ -14,12 +20,6 @@ const galleryItems = [
     id: "kids-room",
     alt: "اتاق کودک صورتی با تخت خانه‌ای و قفسه اسباب‌بازی",
     src: "/images/0b8b70ab-44f8-47b4-838a-b716c8f9cf3c.png",
-    sizes: "(min-width: 768px) 590px, 396px",
-  },
-  {
-    id: "mirror-console",
-    alt: "آینه قدی قوسی با کنسول سفید و گیاهان خانگی",
-    src: "/images/81c314ab-78b2-443e-ac63-9018b16ed211.png",
     sizes: "(min-width: 768px) 590px, 396px",
   },
   {

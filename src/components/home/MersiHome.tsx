@@ -197,7 +197,13 @@ export default function MersiHome() {
           <a className="achin-footer__social" href="#" aria-label="واتساپ">
             <FaWhatsapp size={20} />
           </a>
-          <a className="achin-footer__social" href="#" aria-label="اینستاگرام">
+          <a
+            className="achin-footer__social"
+            href="https://www.instagram.com/achinwood/"
+            aria-label="اینستاگرام"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
             <FaInstagram size={20} />
           </a>
           <a className="achin-footer__social" href="#" aria-label="تلگرام">
@@ -212,7 +218,7 @@ export default function MersiHome() {
 
         <div className="achin-footer__group achin-footer__group--phone" dir="rtl">
           <p className="achin-footer__label">شماره تماس:</p>
-          <p className="achin-footer__value" dir="ltr">+98 912 120 7839 &nbsp; | &nbsp; +98 912 824 3451</p>
+          <p className="achin-footer__value" dir="ltr">+98 912 824 3451</p>
         </div>
 
         <div className="achin-footer__group achin-footer__group--email" dir="rtl">
