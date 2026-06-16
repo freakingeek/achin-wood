@@ -30,7 +30,7 @@ const HomeHeroSection = forwardRef<HTMLElement>(
           پروژه مسکونی آجودانیه
         </LocationBox>
 
-        <div className="absolute lg:bottom-160 lg:inset-s-35 inset-s-14 bottom-45 z-1">
+          <div className="absolute inset-s-14 bottom-45 z-1 lg:inset-s-35 lg:top-[clamp(13rem,30vh,25rem)]">
           <p
             data-hero-animate
             className="m-0 text-[clamp(2.5rem,4.45vw,4rem)] font-extrabold leading-[1.18] tracking-[-0.055em] text-[#565449] max-[1024px]:text-[clamp(2.5rem,6.25vw,4rem)] max-[767px]:text-[32px]"
