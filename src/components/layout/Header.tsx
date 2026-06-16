@@ -8,7 +8,7 @@ const navItems = [
   { href: "#contact", label: "تماس با ما" },
 ];
 
-const catalogHref = "http://s3.lexoya.com/longbio-gca/achin-wood.pdf";
+const catalogHref = "https://s3.lexoya.com/longbio-gca/achin-wood.pdf";
 
 const linkClasses =
   "text-[16px] font-medium leading-none text-[#DAD1BE] transition-colors duration-200 hover:text-[#FFFCF5] focus-visible:text-[#FFFCF5] focus-visible:outline-none";
