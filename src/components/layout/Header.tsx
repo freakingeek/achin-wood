@@ -1,5 +1,9 @@
-import Image from "next/image";
+"use client";
 
+import Image from "next/image";
+import { useState } from "react";
+
+import CatalogDownloadModal from "@/components/layout/CatalogDownloadModal";
 import MobileHeaderMenu from "@/components/layout/MobileHeaderMenu";
 
 const navItems = [
@@ -14,8 +18,11 @@ const linkClasses =
   "text-[16px] font-medium leading-none text-[#DAD1BE] transition-colors duration-200 hover:text-[#FFFCF5] focus-visible:text-[#FFFCF5] focus-visible:outline-none";
 
 export default function Header() {
+  const [isCatalogModalOpen, setIsCatalogModalOpen] = useState(false);
+
   return (
-    <header className="header fixed inset-x-0 top-0 z-50 h-16 bg-[#11110D] opacity-0 md:h-28">
+    <>
+      <header className="header fixed inset-x-0 top-0 z-50 h-16 bg-[#11110D] opacity-0 md:h-28">
       <div className="relative flex h-full items-center justify-between px-7 md:px-16" dir="rtl">
         <div className="flex items-center">
           <nav className="hidden items-center gap-14.5 md:flex" aria-label="ناوبری اصلی">
@@ -27,15 +34,17 @@ export default function Header() {
           </nav>
 
           <div className="flex items-center gap-4 md:hidden">
-            <MobileHeaderMenu navItems={navItems} catalogHref={catalogHref} />
-            <a
+            <MobileHeaderMenu
+              navItems={navItems}
+              onCatalogClick={() => setIsCatalogModalOpen(true)}
+            />
+            <button
               className="inline-flex h-9 shrink-0 items-center justify-center rounded-full border border-[#DAD1BE]/40 px-3 text-[12px] font-medium leading-none text-[#FFFCF5] transition-colors duration-200 hover:border-[#FFFCF5] hover:bg-[#FFFCF5]/10 focus-visible:border-[#FFFCF5] focus-visible:bg-[#FFFCF5]/10 focus-visible:outline-none"
-              href={catalogHref}
-              rel="noopener noreferrer"
-              target="_blank"
+              onClick={() => setIsCatalogModalOpen(true)}
+              type="button"
             >
               دانلود کاتالوگ
-            </a>
+            </button>
           </div>
         </div>
 
@@ -54,16 +63,22 @@ export default function Header() {
           />
         </a>
 
-        <a
+        <button
           className="hidden h-12.5 shrink-0 items-center justify-center bg-[#6A6658] px-6 text-[16px] font-medium text-[#FFFCF5] transition-colors duration-200 hover:bg-[#7A7565] focus-visible:bg-[#7A7565] focus-visible:outline-none md:inline-flex"
-          href={catalogHref}
-          rel="noopener noreferrer"
-          target="_blank"
+          onClick={() => setIsCatalogModalOpen(true)}
+          type="button"
         >
           دانلود کاتالوگ
-        </a>
+        </button>
       </div>
 
-    </header>
+      </header>
+
+      <CatalogDownloadModal
+        catalogHref={catalogHref}
+        isOpen={isCatalogModalOpen}
+        onClose={() => setIsCatalogModalOpen(false)}
+      />
+    </>
   );
 }

@@ -8,11 +8,11 @@ type NavItem = {
 };
 
 type MobileHeaderMenuProps = {
-  catalogHref: string;
   navItems: NavItem[];
+  onCatalogClick: () => void;
 };
 
-export default function MobileHeaderMenu({ catalogHref, navItems }: MobileHeaderMenuProps) {
+export default function MobileHeaderMenu({ navItems, onCatalogClick }: MobileHeaderMenuProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -50,15 +50,16 @@ export default function MobileHeaderMenu({ catalogHref, navItems }: MobileHeader
               {item.label}
             </a>
           ))}
-          <a
+          <button
             className="mt-16 inline-flex h-12 self-start items-center justify-center bg-[#11110D] px-6 text-[16px] font-medium text-[#DAD1BE] transition-colors duration-200 hover:text-[#FFFCF5] focus-visible:text-[#FFFCF5] focus-visible:outline-none"
-            href={catalogHref}
-            onClick={() => setIsMenuOpen(false)}
-            rel="noopener noreferrer"
-            target="_blank"
+            onClick={() => {
+              setIsMenuOpen(false);
+              onCatalogClick();
+            }}
+            type="button"
           >
             دانلود کاتالوگ
-          </a>
+          </button>
         </nav>
       </div>
     </>
